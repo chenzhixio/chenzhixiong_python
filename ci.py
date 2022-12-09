@@ -1,3 +1,4 @@
+import os
 import time
 import pytest
 import json
@@ -48,6 +49,18 @@ def runtest2():
 def download():
     name = request.args.get('name')
     return send_file(F'{Config.report_path}/test{name}.html', as_attachment=True)
+
+
+@app.route('/get_name', methods=['GET', 'POST'])
+def get_report_namelist():
+    text = os.listdir(Config.report_path)
+    del text[0]
+    locallist = []
+    for filename in text:
+        localtime = filename[4:-5]
+        locallist.append(localtime)
+        print(localtime)
+    return {"code": "0", "msg": locallist}
 
 
 if __name__ == '__main__':

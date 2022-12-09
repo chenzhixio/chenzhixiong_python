@@ -1,6 +1,10 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
+"""
+ -----*--------------*-------
+__author__ :  chenzhixiong
+__time__ :  2022.11.11
+-*- coding: utf-8 -*-
+ -----*--------------*-------
+"""
 from ftplib import FTP
 from common.conf_handle import myconf
 from common.loger_handler import mylog
@@ -10,9 +14,13 @@ class LinkFTP:
     连接 FTP 服务器
     """
 
-    def __init__(self, host: str, port: int, username: str, password: str):
-        ftp_ = FTP()
+    def __init__(self):
 
+        host = myconf.get("sdcard", "host")
+        port = int(myconf.get("sdcard", "port"))
+        username = myconf.get("sdcard", "username")
+        password = myconf.get("sdcard", "password")
+        ftp_ = FTP()
         ftp_.connect(host, port)   # 连接
         ftp_.login(username, password)  # 登录
         mylog.info(f"{host} {port} {username} {password} 连接成功")
@@ -57,16 +65,14 @@ class LinkFTP:
                 pass
 
 
-# P = LinkFTP(host="145.192.1.20", port=21, username="gdu", password="123456")
-# path = myconf.get("sdcard", "PHOTO_path")
-# video_list = P.path_list(path)
-# text7 = len(video_list)
-# print(F"========{video_list}============{text7}===")
-#
-#
-# # P.delete_all_photo("VIDEO")
-# # # P.delete_all_photo("PHOTO")
-# video_list = P.path_list("VIDEO")
-# # photo_list = P.path_list("PHOTO")
-# print(video_list)
+if __name__ == "__main__":
+    P = LinkFTP()
+    path = myconf.get("sdcard", "photo_path")
+    video_list = P.path_list(path)
+    print(F"==={len(video_list)}======{video_list}=========")
+
+    # path = myconf.get("sdcard", "video_path")
+    # video_list = P.path_list(path)
+    # print(F"==={len(video_list)}======{video_list}=========")
+
 

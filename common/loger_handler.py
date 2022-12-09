@@ -1,7 +1,7 @@
 """
  -----*--------------*-------
 __author__ :  chenzhixiong
-__time__ :  14:34
+__time__ :  2022.11.11
 -*- coding: utf-8 -*-
  -----*--------------*-------
 """
@@ -28,7 +28,6 @@ class MyLogger(object):
         fh.setFormatter(formatter)
         mylog.removeFilter(fh)
         return mylog
-
 
 mylog = MyLogger()
 

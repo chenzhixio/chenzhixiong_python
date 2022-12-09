@@ -13,6 +13,8 @@ class Config:
 
     datas_path = os.path.join(dir_path, "datas")
 
+    screenshot_path = os.path.join(dir_path, "datas", "screenshot")
+
     data_ftp_path = os.path.join(dir_path, "datas", "ftpdown")
 
     ini_path = os.path.join(dir_path, "datas", "normal.ini")
@@ -23,4 +25,4 @@ class Config:
 
 
 if __name__ == "__main__":
-    print(os.path.exists(F"{Config.datas_path}\\stat"))
+    print(F"{Config.screenshot_path}\\stat")
