@@ -1,0 +1,4 @@
+import requests
+
+data = {"msgtype": "text","text": {"content": "jekenis流水线环境搭建,执行完成","mentioned_list": ["@all"],}}
+requests.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8655c089-5d81-4589-8d9b-01c1b54ec573', json=data)
